@@ -1,4 +1,4 @@
-# Java MSA Environment Setup Guide
+# Pega Environment Setup Guide
 
 ---
 
