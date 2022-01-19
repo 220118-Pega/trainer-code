@@ -49,7 +49,9 @@ public class Driver {
 			}
 			System.out.println("How the guessing is going: ");
 			//print the current state of my mystery word
-			// use the wrapper class Character instead of char primitive, so we can make use of the toString method
+			// use the wrapper class Character instead of char primitive, so we can make use of the toString method available to Objects
+			// primitives don't have access to certain object methods, we use wrapper classes to "wrap" around primitive data types 
+			// to be able to treat them like objects 
 			for(Character letter:originalWord.toCharArray())
 			{
 				if(correctlyGuessedLetters.contains(letter.toString()))
