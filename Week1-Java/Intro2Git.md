@@ -12,6 +12,13 @@ Git is a distributed version control system designed to help manage your coding 
 - **DVCS**
   - Stands for _distributed version control system_. This is a type of VCS that allows multiple users to have different versions of the code base at the same time with no clear version of truth.
   - In practice, there exists a stable version of the code that other versions branch from and eventually merge back into. This working version is the main product that is being developed by a team of devs.
+- **Tracked files**
+  - Files that you want tracked by git
+  - Changes to these files are noticed by the system, and could potentially be saved in a commit
+- **Untracked files**
+  - These files are ignored by git
+  - Changes to these files aren't noticed
+  - If you have an untracked file not listed in your .gitignore,
 
 ---
 
