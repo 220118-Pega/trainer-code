@@ -33,8 +33,7 @@ public class MainMenu {
 			switch (userInput) {
 			case "0": 
 				System.out.println("Creating an issue");
-				Issue newIssue = new Issue();
-				System.out.println(newIssue);
+				createIssue();
 				break;
 			case "x":
 				System.out.println("Goodbye");
@@ -49,4 +48,13 @@ public class MainMenu {
 
 	}
 
+	private void createIssue() {
+		// TODO Auto-generated method stub
+		System.out.println("Enter a title for your issue: ");
+		String title = myscanner.nextLine();
+		System.out.println("Enter a description for your issue: ");
+		String description = myscanner.nextLine();
+		Issue newIssue = new Issue(title, description);
+		System.out.println(newIssue);
+	}
 }

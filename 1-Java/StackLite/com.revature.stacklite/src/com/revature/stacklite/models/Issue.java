@@ -58,6 +58,10 @@ public class Issue {
 	public int getId() {
 		return id;
 	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
 	//Format of object when converted to string
 	@Override
 	public String toString() {
