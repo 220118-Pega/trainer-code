@@ -1,5 +1,7 @@
 package com.revature.stacklite.models;
 
+import java.util.List;
+
 /**
  * This is a class used to model coding issues
  *  @author MarielleNolasco
@@ -16,6 +18,7 @@ public class Issue {
 	private String title;
 	private String description;
 	private int id;
+	private List<Solution> solutions;
 	
 //Constructors
 	//special methods that are used to initialize properties of a class
@@ -37,6 +40,11 @@ public class Issue {
 		// Calling an existing constructor of the same class
 		this(title, description);
 		this.id = id;
+	}
+	public Issue(String title, String description, int id, List<Solution> solutions)
+	{
+		this(title, description, id);
+		this.solutions = solutions;
 	}
 	// having multiple constructors is a form of polymorphism, called method overloading
 	// when you call a constructor from another constructor, that's called constructor chaining
@@ -61,6 +69,13 @@ public class Issue {
 	
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public List<Solution> getSolutions() {
+		return solutions;
+	}
+	public void setSolutions(List<Solution> solutions) {
+		this.solutions = solutions;
 	}
 	//Format of object when converted to string
 	@Override
