@@ -1,6 +1,7 @@
 package com.revature.stacklite.dl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.revature.stacklite.models.Issue;
@@ -16,10 +17,10 @@ public class InMemoryRepository implements IRepository {
 	
 	public InMemoryRepository() {
 		// seeding my list of issues with dummy data
-		listOfIssues = new ArrayList<Issue>(){{
-			new Issue("Code doesn't work, why??", "My code doesn't work I don't know why", 1);
-			new Issue("Code works??", "My code works I don't know why", 2);
-		}};
+		listOfIssues = Arrays.asList(
+				new Issue("Code doesn't work, why??", "My code doesn't work I don't know why", 1),
+				new Issue("Code works??", "My code works I don't know why", 2));
+			
 		latestId = 3;
 	}
 
@@ -34,7 +35,7 @@ public class InMemoryRepository implements IRepository {
 	@Override
 	public List<Issue> getIssues() {
 		// TODO Auto-generated method stub
-		return this.listOfIssues;
+		return listOfIssues;
 	}
 
 
