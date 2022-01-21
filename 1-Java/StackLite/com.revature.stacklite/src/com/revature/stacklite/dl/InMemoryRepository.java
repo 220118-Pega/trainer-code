@@ -3,6 +3,9 @@ package com.revature.stacklite.dl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.revature.stacklite.models.Issue;
 import com.revature.stacklite.models.Solution;
 
@@ -14,7 +17,7 @@ import com.revature.stacklite.models.Solution;
 public class InMemoryRepository implements IRepository {
 	private static ArrayList<Issue> listOfIssues; 
 	private static int latestId;
-	
+	private Logger logger = LogManager.getLogger(this.getClass());
 	public InMemoryRepository() {
 		// seeding my list of issues with dummy data
 		List<Solution> solutionListA = new ArrayList<Solution>() {{
@@ -57,7 +60,10 @@ public class InMemoryRepository implements IRepository {
 				foundIssue = issue;
 			}
 		}
-		if(foundIssue == null) throw new Exception("Issue not found");
+		if(foundIssue == null) {
+			logger.error("Issue not found");
+			throw new Exception("Issue not found");
+		}
 		return foundIssue;
 	}
 

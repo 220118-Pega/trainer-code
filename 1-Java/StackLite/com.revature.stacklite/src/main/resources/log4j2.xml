@@ -1,0 +1,25 @@
+<Configuration status="INFO">
+	# Config status is useful for troubleshooting config issues
+	<Appenders>
+		# Appenders are places you will be logging to
+	
+	#Console Appender
+		<Console name="stdout" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %p %m %n" />
+			# Defines pattern of log message
+		# where %d determines date pattern, 
+			# %p – output of log level, 
+			# %m – output of logged message and 
+			# %n – adds new line symbol.
+		</Console>
+		<File name="fout" fileName="logs/runtime.log" append="true">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %p %m %n" />
+		</File>
+	</Appenders>
+	<Loggers>
+		<Root level="debug">
+			<!-- <AppenderRef ref="stdout" /> -->
+			<AppenderRef ref="fout"/>
+		</Root>
+	</Loggers>
+</Configuration>

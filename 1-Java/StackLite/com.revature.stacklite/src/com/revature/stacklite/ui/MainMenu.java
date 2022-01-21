@@ -2,6 +2,9 @@ package com.revature.stacklite.ui;
 
 import java.util.Scanner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.revature.stacklite.bl.IIssueBL;
 import com.revature.stacklite.models.Issue;
 import com.revature.stacklite.models.Solution;
@@ -17,7 +20,11 @@ public class MainMenu {
 	// declare it as a dependency
 	private Scanner myscanner;
 	private IIssueBL issueBL;
-
+	
+	// Set up logging
+	// You configure a logger per class so you have more flexibility in 
+	// configuring your logs
+	private final Logger logger = LogManager.getLogger(this.getClass());
 	// inject this dep via constructor
 	public MainMenu(Scanner myscanner, IIssueBL issueBL) {
 		this.myscanner = myscanner;
@@ -72,14 +79,18 @@ public class MainMenu {
 		System.out.println("Enter the answer to your proposed solution");
 		String answer = myscanner.nextLine();
 		Solution newSolution = new Solution(answer);
+		logger.debug(answer);
 		try {
+			logger.info("Adding solution");
 			newSolution.setIssueId(Integer.parseInt(stringId));
 			issueBL.addSolution(newSolution);
 		} catch (NumberFormatException ex) {
 			System.out.println("Please only enter numerics");
+			logger.error("Invalid user input");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println("No such issue found, try another id");
+			logger.error("Issue not found");
 		}
 	}
 
@@ -98,9 +109,11 @@ public class MainMenu {
 		} catch (NumberFormatException e1) {
 			// TODO Auto-generated catch block
 			System.out.println("Please only enter numerics");
+			logger.error("Invalid user input");
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			System.out.println("No such issue found, try another id");
+			logger.error("Issue not found");
 		}
 
 	}
