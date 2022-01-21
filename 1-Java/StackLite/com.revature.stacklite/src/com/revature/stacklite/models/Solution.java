@@ -7,7 +7,6 @@ public class Solution {
 	private int issueId;
 	public Solution()
 	{
-		
 	}
 	public Solution(String answer, int upvote)
 	{
