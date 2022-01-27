@@ -6,12 +6,16 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class ConnectionFactory {
 	// eager loading - you create instance of connection factory as soon as the
 	// program starts up
 	private static final ConnectionFactory connectionFactory = new ConnectionFactory();
 	// hold db config stuff
 	private Properties prop = new Properties();
+	private final Logger logger = LogManager.getLogger(this.getClass());
 
 	// force load postgresql driver
 	// static members of class get loaded into memory at the start of program
@@ -33,6 +37,7 @@ public class ConnectionFactory {
 			prop.load(loader.getResourceAsStream("db.properties"));
 		} catch (IOException e) {
 			e.printStackTrace();
+			logger.error("Can't find db.props file");
 		}
 	}
 
@@ -53,8 +58,8 @@ public class ConnectionFactory {
 					prop.getProperty("password"));
 		} catch (SQLException e) {
 			e.printStackTrace();
+			logger.error("Can't get connection");
 		}
 		return conn;
-
 	}
 }
