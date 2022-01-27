@@ -16,4 +16,6 @@ public interface IRepository{
 	List<Issue> getIssues();
 	Issue getIssueById(int id) throws Exception;
 	void addSolution(Solution newSolution) throws Exception;
+	void updateSolution(Solution updatedSolution);
+	Solution getSolutionById(int id);
 }

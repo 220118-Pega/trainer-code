@@ -106,6 +106,7 @@ public class MainMenu {
 			for (Solution solution : foundIssue.getSolutions()) {
 				System.out.println(solution);
 			}
+			getSolutionSubMenu();
 		} catch (NumberFormatException e1) {
 			// TODO Auto-generated catch block
 			System.out.println("Please only enter numerics");
@@ -116,6 +117,32 @@ public class MainMenu {
 			logger.error("Issue not found");
 		}
 
+	}
+
+	private void getSolutionSubMenu() {
+		System.out.println("Would like to: ");
+		System.out.println("[0] Upvote solution");
+		System.out.println("[x] Exit");
+		String userInput = myscanner.nextLine();
+		switch(userInput)
+		{
+		case "0":
+			upVoteSolution();
+			break;
+		case "x":
+			System.out.println("going back to main menu");
+			break;
+		default:
+			System.out.println("wrong input, going back to main menu");
+		}
+		
+	}
+
+	private void upVoteSolution() {
+		// TODO Auto-generated method stub
+		System.out.println("Enter solution id of solution you want to upvote: ");
+		String userInput = myscanner.nextLine();
+		issueBL.upVoteSolution(Integer.parseInt(userInput));
 	}
 
 	private void getIssues() {

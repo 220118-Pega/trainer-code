@@ -1,5 +1,6 @@
 package com.revature.stacklite.dl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.stacklite.models.Issue;
@@ -7,9 +8,12 @@ import com.revature.stacklite.models.Solution;
 
 public class DBRepository implements IRepository{
 	private DAO<Issue,Integer> issueDAO;
+	private DAO<Solution,Integer> solutionDAO;
 	
-	public DBRepository(DAO<Issue,Integer> issueDAO) {
+	
+	public DBRepository(DAO<Issue,Integer> issueDAO, DAO<Solution, Integer> solutionDAO) {
 		this.issueDAO = issueDAO;
+		this.solutionDAO = solutionDAO;
 	}
 	@Override
 	public void addIssue(Issue newIssue) {
@@ -25,14 +29,38 @@ public class DBRepository implements IRepository{
 
 	@Override
 	public Issue getIssueById(int id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		// What the bl requires isn't the version of the issue
+		// that the issueDAO.findById returns
+		// What you need is the issue with the solutions suggested
+		// for it 
+		Issue issueWanted = issueDAO.findById(id);
+		List<Solution> allSolutions = solutionDAO.findAll();
+		//issueWanted.setSolutions(allSolutions.stream().filter(soln -> soln.getIssueId() == id).toList());
+		// the singular line above is equivalent to
+		List<Solution> solutions4Issue = new ArrayList<Solution>();
+		for(Solution soln:allSolutions)
+		{
+			if(soln.getIssueId() == id) solutions4Issue.add(soln);
+		}
+		issueWanted.setSolutions(solutions4Issue);
+		return issueWanted;
 	}
 
 	@Override
 	public void addSolution(Solution newSolution) throws Exception {
 		// TODO Auto-generated method stub
+		solutionDAO.add(newSolution);
 		
+	}
+	@Override
+	public void updateSolution(Solution updatedSolution) {
+		// TODO Auto-generated method stub
+		solutionDAO.update(updatedSolution);
+	}
+	@Override
+	public Solution getSolutionById(int id) {
+		// TODO Auto-generated method stub
+		return solutionDAO.findById(id);
 	}
 	
 }

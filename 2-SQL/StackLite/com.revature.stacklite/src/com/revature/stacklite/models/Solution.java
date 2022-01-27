@@ -23,6 +23,13 @@ public class Solution {
 		this(answer, upvote);
 		this.id = id;
 	}
+	public Solution(String answer, int id, int upvote, int issueId) {
+		super();
+		this.answer = answer;
+		this.id = id;
+		this.upvote = upvote;
+		this.issueId = issueId;
+	}
 	public String getAnswer() {
 		return answer;
 	}

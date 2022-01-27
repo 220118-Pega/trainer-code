@@ -38,7 +38,7 @@ public class SolutionDAO implements DAO<Solution, Integer> {
 			PreparedStatement pstmt = conn.prepareStatement(query);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
-				solutions.add(new Solution(rs.getString("answer"), rs.getInt("upvote"), rs.getInt("id")));
+				solutions.add(new Solution(rs.getString("answer"), rs.getInt("id"), rs.getInt("upvote"), rs.getInt("issue_id")));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -66,6 +66,18 @@ public class SolutionDAO implements DAO<Solution, Integer> {
 	@Override
 	public void update(Solution newObject) {
 		// TODO Auto-generated method stub
+		try(Connection conn = ConnectionFactory.getInstance().getConnection())
+		{
+			String query = "update solutions set upvote = ?, answer = ? where id = ?";
+			PreparedStatement pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, newObject.getUpvote());
+			pstmt.setString(2, newObject.getAnswer());
+			pstmt.setInt(3, newObject.getId());
+			pstmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

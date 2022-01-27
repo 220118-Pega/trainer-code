@@ -12,4 +12,5 @@ public interface IIssueBL {
 	List<Issue> getIssues();
 	Issue getIssueById(int id) throws Exception;
 	void addSolution(Solution solution) throws Exception;
+	void upVoteSolution(int id);
 }

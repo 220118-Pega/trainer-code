@@ -77,5 +77,17 @@ public class InMemoryRepository implements IRepository {
 		issue2Update.setSolutions(existingSolutions);
 	}
 
+	@Override
+	public void updateSolution(Solution updatedSolution) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Solution getSolutionById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

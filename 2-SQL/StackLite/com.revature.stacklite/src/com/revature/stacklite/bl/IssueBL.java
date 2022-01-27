@@ -32,4 +32,19 @@ public class IssueBL implements IIssueBL {
 		// TODO Auto-generated method stub
 		repo.addSolution(solution);
 	}
+	@Override
+	public void upVoteSolution(int id) {
+		// TODO Auto-generated method stub
+		Solution solution2UpVote = repo.getSolutionById(id);
+		int currentUpvote = solution2UpVote.getUpvote();
+		try {
+			// diff ++x vs x++: both increment x but ++x returns incremented value, x++ returns old value, then increments value of x
+			solution2UpVote.setUpvote(++currentUpvote);
+			repo.updateSolution(solution2UpVote);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 }
