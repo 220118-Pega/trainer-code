@@ -43,7 +43,38 @@ public class DBRepository implements IRepository{
 			if(soln.getIssueId() == id) solutions4Issue.add(soln);
 		}
 		issueWanted.setSolutions(solutions4Issue);
-		return issueWanted;
+		
+		//return issueWanted;
+		
+		try(Connection conn = ConnectionFactory.getInstance().getConnection())
+		{
+			String query = "select * from issues inner join solutions on issues.id = solutions.issue_id where issues.id = ?";
+			PreparedStatement pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
+			int ctr = 0;
+			Issue issueWanted2 = new Issue();
+			ArrayList<Solution> solutionsOfIssue = new ArrayList<Solution>();
+			while(rs.next()) {
+				//unpack my result set here
+				if(ctr == 0) {
+					issueWanted2.setId(rs.getInt("id"));
+					issueWanted2.setTitle(rs.getString("title"));
+					issueWanted2.setDescription(rs.getString("description"));
+					++ctr;
+				}
+				solutionsOfIssue.add(new Solution(
+							rs.getString("answer"),
+							rs.getInt("id"),
+							rs.getInt("upvote"),
+							rs.getInt("issue_id")
+						));
+				
+			}
+			issueWanted2.setSolutions(solutionsOfIssue);
+			return issueWanted2;
+		}
+		
 	}
 
 	@Override
