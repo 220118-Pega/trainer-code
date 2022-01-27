@@ -68,6 +68,17 @@ public class IssueDAO implements DAO<Issue, Integer> {
 	@Override
 	public void add(Issue newObject) {
 		// TODO Auto-generated method stub
+		try(Connection conn= ConnectionFactory.getInstance().getConnection())
+		{
+			String query = "insert into issues (title, description) values (?,?);";
+			PreparedStatement pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, newObject.getTitle());
+			pstmt.setString(2, newObject.getDescription());
+			pstmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

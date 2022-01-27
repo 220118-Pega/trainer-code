@@ -14,7 +14,7 @@ public class DBRepository implements IRepository{
 	@Override
 	public void addIssue(Issue newIssue) {
 		// TODO Auto-generated method stub
-		
+		issueDAO.add(newIssue);
 	}
 
 	@Override
