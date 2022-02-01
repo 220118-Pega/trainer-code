@@ -7,13 +7,11 @@ import com.revature.stacklite.controllers.SolutionController;
 import com.revature.stacklite.dl.DBRepository;
 import com.revature.stacklite.dl.IssueDAO;
 import com.revature.stacklite.dl.SolutionDAO;
-import com.revature.stacklite.utils.DocumentationFactory;
 import com.revature.stacklite.utils.Router;
 
 import io.javalin.Javalin;
 import io.javalin.plugin.openapi.OpenApiOptions;
 import io.javalin.plugin.openapi.OpenApiPlugin;
-import io.javalin.plugin.openapi.dsl.OpenApiBuilder;
 import io.javalin.plugin.openapi.ui.SwaggerOptions;
 import io.swagger.v3.oas.models.info.Info;
 

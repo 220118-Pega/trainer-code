@@ -13,7 +13,6 @@ public interface IIssueBL {
 	Issue getIssueById(int id) throws Exception;
 	void addSolution(Solution solution) throws Exception;
 	void upVoteSolution(int id);
-	void updateSolution(Solution updatedSolution);
 
 	void updateSolution(Integer solutionId, Integer newUpVote);
 }
