@@ -25,9 +25,9 @@ public class Router {
 	
 	public void setUpEndPoints() {
 		app.get("/Issues", OpenApiBuilder.documented(DocumentationFactory.getDoc("getIssues"), issueController.getAll()));
-		app.get("/Issues?",  OpenApiBuilder.documented(DocumentationFactory.getDoc("getIssueById"), issueController.getById()));
+		app.get("/Issues/{issue_id}/Solutions",  OpenApiBuilder.documented(DocumentationFactory.getDoc("getIssueById"), issueController.getById()));
 		app.post("/Issues",  OpenApiBuilder.documented(DocumentationFactory.getDoc("addIssue"), issueController.add()));
 		app.post("/Issues/{issue_id}/Solutions", OpenApiBuilder.documented(DocumentationFactory.getDoc("addSolution"), solutionController.add()));
-		app.put("/Issues/{issue_id}/Solutions", OpenApiBuilder.documented(DocumentationFactory.getDoc("updateSolution"), solutionController.update()));
+		app.put("/Solutions/{solution_id}", OpenApiBuilder.documented(DocumentationFactory.getDoc("updateSolution"), solutionController.update()));
 	}
 }

@@ -34,7 +34,7 @@ public class IssueController implements IController {
 		return ctx -> {
 			//get id of solution we want from the path param, 
 			// we extract it from the ctx 
-			String id = ctx.queryParam("issue_id");
+			String id = ctx.pathParam("issue_id");
 			int actualId = Integer.parseInt(id);
 			try {
 				ctx.jsonStream(issueBL.getIssueById(actualId));

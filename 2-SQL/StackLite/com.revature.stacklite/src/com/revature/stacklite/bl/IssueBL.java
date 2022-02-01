@@ -52,4 +52,17 @@ public class IssueBL implements IIssueBL {
 		// TODO Auto-generated method stub
 		repo.updateSolution(updatedSolution);
 	}
+	@Override
+	public void updateSolution(Integer solutionId, Integer newUpVote) {
+		// TODO Auto-generated method stub
+		Solution solution2Update = repo.getSolutionById(solutionId);
+		try {
+			solution2Update.setUpvote(newUpVote);
+			repo.updateSolution(solution2Update);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 }

@@ -36,7 +36,9 @@ public class SolutionController implements IController{
 	public Handler update() {
 		// TODO Auto-generated method stub
 		return ctx -> {
-			issueBL.updateSolution(ctx.bodyStreamAsClass(Solution.class));
+			Integer newUpVote = Integer.parseInt(ctx.queryParam("upvote"));
+			Integer solutionId = Integer.parseInt(ctx.pathParam("solution_id"));
+			issueBL.updateSolution(solutionId, newUpVote);
 			ctx.status(204);
 		};
 	}
