@@ -1,6 +1,7 @@
 package com.revature.stacklite.controllers;
 
 import com.revature.stacklite.bl.IIssueBL;
+import com.revature.stacklite.models.Issue;
 
 import io.javalin.http.Handler;
 
@@ -30,13 +31,39 @@ public class IssueController implements IController {
 	@Override
 	public Handler getById() {
 		// TODO Auto-generated method stub
-		return null;
+		return ctx -> {
+			//get id of solution we want from the path param, 
+			// we extract it from the ctx 
+			String id = ctx.queryParam("issue_id");
+			int actualId = Integer.parseInt(id);
+			try {
+				ctx.jsonStream(issueBL.getIssueById(actualId));
+			} catch (NullPointerException ex)
+			{
+				ctx.status(204);
+			}
+			
+		};
 	}
 
 	@Override
 	public Handler add() {
 		// TODO Auto-generated method stub
-		return null;
+		return ctx -> {
+			// unmarshall my request body into an issue class
+			// bodyAsClass method unmarshalls the request body into the structure of the class you input into it
+			// transforms the request body as the specified class
+			Issue newIssue = ctx.bodyStreamAsClass(Issue.class);
+			try {
+				issueBL.addIssue(newIssue);
+				ctx.status(201);
+			} catch (Exception e)
+			{
+				ctx.status(400);
+			}
+			
+			
+		};
 	}
 
 	@Override

@@ -47,4 +47,9 @@ public class IssueBL implements IIssueBL {
 		}
 		
 	}
+	@Override
+	public void updateSolution(Solution updatedSolution) {
+		// TODO Auto-generated method stub
+		repo.updateSolution(updatedSolution);
+	}
 }
