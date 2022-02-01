@@ -15,14 +15,15 @@ import io.javalin.plugin.openapi.OpenApiPlugin;
 import io.javalin.plugin.openapi.ui.SwaggerOptions;
 import io.swagger.v3.oas.models.info.Info;
 
-
 public class RESTDriver {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		// Create Controllers 
-		IController issueController = new IssueController(new IssueBL(new DBRepository(new IssueDAO(), new SolutionDAO())));
-		IController solutionController = new SolutionController(new IssueBL(new DBRepository(new IssueDAO(), new SolutionDAO())));
+		// Create Controllers
+		IController issueController = new IssueController(
+				new IssueBL(new DBRepository(new IssueDAO(), new SolutionDAO())));
+		IController solutionController = new SolutionController(
+				new IssueBL(new DBRepository(new IssueDAO(), new SolutionDAO())));
 		Javalin app = Javalin.create(config -> {
 			config.registerPlugin(new OpenApiPlugin(getOpenApiOptions()));
 		}).start(7000);

@@ -15,4 +15,5 @@ public interface IIssueBL {
 	void upVoteSolution(int id);
 
 	void updateSolution(Integer solutionId, Integer newUpVote);
+	Solution getSolutionById(int id);
 }

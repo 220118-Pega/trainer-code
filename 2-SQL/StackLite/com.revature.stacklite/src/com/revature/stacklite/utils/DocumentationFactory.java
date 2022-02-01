@@ -37,6 +37,10 @@ public class DocumentationFactory {
 			{
 				op.addTagsItem("Solution");
 			}).queryParam("upvote", Integer.class).result("204");
+		case "getSolution":
+			return OpenApiBuilder.document().operation(op -> {
+				op.addTagsItem("Solution");
+			}).json("200", Solution.class);
 		default:
 			return null;
 		}

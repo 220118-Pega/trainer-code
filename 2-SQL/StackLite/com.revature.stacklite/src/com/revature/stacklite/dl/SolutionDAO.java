@@ -20,7 +20,7 @@ public class SolutionDAO implements DAO<Solution, Integer> {
 			pstmt.setInt(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
-				return new Solution(rs.getString("answer"), rs.getInt("upvote"), rs.getInt("id"));
+				return new Solution(rs.getString("answer"), rs.getInt("id"), rs.getInt("upvote"), rs.getInt("issue_id"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -21,7 +21,9 @@ public class SolutionController implements IController{
 	@Override
 	public Handler getById() {
 		// TODO Auto-generated method stub
-		return null;
+		return ctx -> {
+			ctx.jsonStream(issueBL.getSolutionById(Integer.parseInt(ctx.pathParam("solution_id"))));
+		};
 	}
 
 	@Override

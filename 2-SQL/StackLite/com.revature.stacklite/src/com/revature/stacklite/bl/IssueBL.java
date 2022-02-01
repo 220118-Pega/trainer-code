@@ -66,4 +66,10 @@ public class IssueBL implements IIssueBL {
 		}
 
 	}
+
+	@Override
+	public Solution getSolutionById(int id) {
+		// TODO Auto-generated method stub
+		return repo.getSolutionById(id);
+	}
 }
