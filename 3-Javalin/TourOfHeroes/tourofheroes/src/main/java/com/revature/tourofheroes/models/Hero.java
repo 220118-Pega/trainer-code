@@ -55,6 +55,12 @@ public class Hero {
 	public void setType(HeroType type) {
 		this.type = type;
 	}
+
+	@Override
+	public String toString() {
+		return "Hero [id=" + id + ", alias=" + alias + ", realName=" + realName + ", power=" + power + ", type=" + type
+				+ "]";
+	}
 	
 	
 }
