@@ -1,0 +1,19 @@
+div {
+  color: blueviolet !important;
+}
+.container {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+#btn:hover {
+  margin-left: 200px;
+}
+
+#btn {
+  border-color: yellow;
+  border-style: groove;
+  padding-top: 10px;
+}
+
+img {
+  margin-left: 75px;
+}
